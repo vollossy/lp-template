@@ -37,9 +37,16 @@ $app->post('/contact', function(\Symfony\Component\HttpFoundation\Request $reque
     $message = $request->get('message');
     $viewParams = compact('name', 'email', 'phone', 'message');
 
-    $body =
+    $body = $twig->render('mail/contact.twig', $viewParams);
 
-    return $twig->render('front/thanks.twig', );
+    $swiftMessage = Swift_Message::newInstance("Новая заявка!", $body, 'text/html');
+    $swiftMessage->setFrom('info@example.com');
+    $swiftMessage->setTo('info@example.com');
+
+    $mailer->send($swiftMessage);
+
+
+    return $twig->render('front/thanks.twig');
 });
 
 $app->run();
