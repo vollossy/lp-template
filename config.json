@@ -1,0 +1,17 @@
+{
+  "debug": true,
+  "swiftmailer":{
+    "options": {
+      "host": "host",
+      "port": 25,
+      "username": "username",
+      "password": "password",
+      "encryption": null,
+      "auth_mode": null
+    }
+  },
+  "system_email": "info@example.com",
+  "message":{
+    "subject": "Новая заявка"
+  }
+}
